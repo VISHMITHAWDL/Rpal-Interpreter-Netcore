@@ -1,0 +1,10 @@
+let Is_palindrome N =
+    let Reverse_num Num =
+        let rec Reverse_helper Rem Result =
+            Rem eq 0 -> Result
+            | Reverse_helper (Rem / 10) (Result * 10 + (Rem - (Rem / 10)*10))
+        in Reverse_helper Num 0
+    in N eq Reverse_num N
+in let Palindrome N = 
+    Is_palindrome N -> 'Palindrome' | 'Not a palindrome'
+in Print(Palindrome 12345)

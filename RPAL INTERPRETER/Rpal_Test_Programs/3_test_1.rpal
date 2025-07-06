@@ -1,0 +1,22 @@
+let rec f_range B = 
+	B eq 1 or B eq 0 -> 0 
+	| B eq 2 -> 1 
+	| f_range (B-1) + f_range (B-2) 
+
+in let rec fibonacci A B M = 
+    f_range (M+1) le B -> 
+        f_range (M+1) ge A -> 
+        (fibonacci A B (M+1) aug f_range (M+1)) 
+        | fibonacci A B (M+1)
+    | nil 
+        
+in let ReverseTuple T =
+    let rec ReverseHelper T R N=
+    N eq 0  -> R |
+            ReverseHelper T (R aug (T N)) (N-1)
+    in
+    ReverseHelper T nil (Order T)
+
+in let fib A B = ReverseTuple(fibonacci A B 0)
+
+in Print(fib 0 100 )
